@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Green Campus Energy Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            color: #1b5e20;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #2e7d32;
+            font-size: 18px;
+        }
+
+        .calculator-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .form-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-section h2 {
+            color: #1b5e20;
+            margin-bottom: 25px;
+            font-size: 24px;
+            border-bottom: 3px solid #2e7d32;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #1b5e20;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #c8e6c9;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #2e7d32;
+            box-shadow: 0 0 5px rgba(46, 125, 50, 0.3);
+        }
+
+        .input-helper {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-calculate {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .btn-calculate:hover {
+            background: #1b5e20;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+        }
+
+        .btn-reset {
+            background: #e8f5e9;
+            color: #1b5e20;
+            border: 2px solid #2e7d32;
+        }
+
+        .btn-reset:hover {
+            background: #c8e6c9;
+        }
+
+        .results-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 20px;
+        }
+
+        .results-section h2 {
+            color: #1b5e20;
+            margin-bottom: 25px;
+            font-size: 24px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #ff9800;
+        }
+
+        .result-label {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .result-value {
+            color: #1b5e20;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .result-unit {
+            color: #999;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        .breakdown-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .breakdown-table th,
+        .breakdown-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 13px;
+        }
+
+        .breakdown-table th {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .breakdown-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .charts-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .charts-section h2 {
+            color: #1b5e20;
+            margin-bottom: 25px;
+            font-size: 24px;
+            border-bottom: 3px solid #2e7d32;
+            padding-bottom: 10px;
+        }
+
+        .chart-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .chart-box {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #e8f5e9;
+        }
+
+        canvas {
+            max-width: 100%;
+        }
+
+        @media (max-width: 1200px) {
+            .calculator-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .results-section {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 32px;
+            }
+
+            .form-section,
+            .results-section,
+            .charts-section {
+                padding: 20px;
+            }
+
+            .result-value {
+                font-size: 24px;
+            }
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #1565c0;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-warning.show {
+            display: block;
+            animation: slideIn 0.3s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert-warning-icon {
+            font-size: 32px;
+            display: inline-block;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+
+        .alert-warning-content {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .alert-warning h3 {
+            color: #856404;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+
+        .alert-warning p {
+            color: #856404;
+            margin: 5px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .alert-danger {
+            background: #f8d7da;
+            border: 2px solid #f5c6cb;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-danger.show {
+            display: block;
+            animation: slideIn 0.3s ease-in-out;
+        }
+
+        .alert-danger h3 {
+            color: #721c24;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+
+        .alert-danger p {
+            color: #721c24;
+            margin: 5px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .recommendation-list {
+            list-style-position: inside;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .recommendation-list li {
+            margin: 8px 0;
+            color: #856404;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>⚡ Campus Energy Consumption Calculator</h1>
+        <p>Calculate and Analyze Energy Usage for Your Building</p>
+    </header>
+
+    <div class="calculator-wrapper">
+        <!-- Input Form Section -->
+        <div class="form-section">
+            <h2>📊 Enter Building Data</h2>
+            
+            <div class="form-group">
+                <label for="buildingName">Building Name</label>
+                <input type="text" id="buildingName" placeholder="e.g., Block A Academic Building">
+                <div class="input-helper">Identify the building for your calculation</div>
+            </div>
+
+            <div class="form-group">
+                <label for="buildingType">Building Type</label>
+                <select id="buildingType">
+                    <option value="">-- Select Building Type --</option>
+                    <option value="academic">Academic Building</option>
+                    <option value="laboratory">Laboratory & Research</option>
+                    <option value="administrative">Administrative</option>
+                    <option value="residential">Residential</option>
+                    <option value="other">Other</option>
+                </select>
+                <div class="input-helper">Helps determine energy density factors</div>
+            </div>
+
+            <div class="form-group">
+                <label for="buildingArea">Building Area (m²)</label>
+                <input type="number" id="buildingArea" placeholder="5000" step="100" min="0">
+                <div class="input-helper">Total floor area of the building</div>
+            </div>
+
+            <div class="form-group">
+                <label for="occupancy">Number of Occupants</label>
+                <input type="number" id="occupancy" placeholder="2500" step="10" min="0">
+                <div class="input-helper">Average daily occupancy</div>
+            </div>
+
+            <div class="form-group">
+                <label for="operatingHours">Daily Operating Hours</label>
+                <input type="number" id="operatingHours" placeholder="10" step="0.5" min="0" max="24">
+                <div class="input-helper">Hours of operation per day (e.g., 10, 14, 24)</div>
+            </div>
+
+            <div class="form-group">
+                <label for="hvacPercentage">HVAC Load (%)</label>
+                <input type="number" id="hvacPercentage" placeholder="50" step="5" min="0" max="100">
+                <div class="input-helper">Percentage of energy used for heating/cooling (typically 40-60%)</div>
+            </div>
+
+            <div class="form-group">
+                <label for="lightingPercentage">Lighting Load (%)</label>
+                <input type="number" id="lightingPercentage" placeholder="25" step="5" min="0" max="100">
+                <div class="input-helper">Percentage of energy used for lighting (typically 20-30%)</div>
+            </div>
+
+            <div class="form-group">
+                <label for="equipmentPercentage">Equipment & Other (%)</label>
+                <input type="number" id="equipmentPercentage" placeholder="25" step="5" min="0" max="100">
+                <div class="input-helper">Remaining percentage (automatically calculated)</div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn-calculate" onclick="calculateEnergy()">📈 Calculate Energy</button>
+                <button class="btn-reset" onclick="resetForm()">🔄 Reset</button>
+            </div>
+
+            <div class="info-box">
+                💡 <strong>Tip:</strong> Based on building type, energy density factors are automatically applied. For customization, adjust percentages according to your specific systems.
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section">
+            <h2>🎯 Energy Calculation Results</h2>
+            
+            <!-- High Consumption Warning Alert -->
+            <div class="alert-danger" id="alertHighConsumption">
+                <h3>🚨 CRITICAL: High Energy Consumption Detected!</h3>
+                <p><strong>Daily Energy Consumption: <span id="alertDailyValue">0</span> kWh</strong></p>
+                <p>Your building is consuming <strong>more than 5,000 kWh per day</strong>. This is significantly above recommended thresholds and requires immediate action.</p>
+                <ul class="recommendation-list">
+                    <li>✓ Conduct a comprehensive energy audit immediately</li>
+                    <li>✓ Identify major energy-consuming systems (likely HVAC)</li>
+                    <li>✓ Implement emergency conservation measures</li>
+                    <li>✓ Consider system upgrades: LED lighting, HVAC optimization, insulation</li>
+                    <li>✓ Set aggressive energy reduction targets</li>
+                    <li>✓ Contact facilities management for immediate review</li>
+                </ul>
+            </div>
+
+            <!-- Medium Consumption Warning Alert -->
+            <div class="alert-warning" id="alertMediumConsumption">
+                <span class="alert-warning-icon">⚠️</span>
+                <div class="alert-warning-content">
+                    <h3>Warning: Elevated Energy Consumption</h3>
+                    <p><strong>Daily Energy Consumption: <span id="alertMediumValue">0</span> kWh</strong></p>
+                    <p>Your building's energy consumption is approaching the high-risk threshold of 5,000 kWh/day. Consider implementing energy efficiency measures:</p>
+                    <ul class="recommendation-list">
+                        <li>✓ Schedule an energy assessment</li>
+                        <li>✓ Review HVAC schedules and setpoints</li>
+                        <li>✓ Upgrade to LED lighting systems</li>
+                        <li>✓ Improve building insulation</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="result-card">
+                <div class="result-label">Daily Energy Consumption</div>
+                <div>
+                    <span class="result-value" id="dailyEnergy">0</span>
+                    <span class="result-unit">kWh</span>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-label">Monthly Energy Consumption</div>
+                <div>
+                    <span class="result-value" id="monthlyEnergy">0</span>
+                    <span class="result-unit">kWh</span>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-label">Annual Energy Consumption</div>
+                <div>
+                    <span class="result-value" id="annualEnergy">0</span>
+                    <span class="result-unit">kWh</span>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-label">Estimated Annual Cost</div>
+                <div>
+                    <span class="result-value" id="annualCost">$0</span>
+                    <span class="result-unit">@ $0.13/kWh</span>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-label">Carbon Footprint (Annual)</div>
+                <div>
+                    <span class="result-value" id="carbonFootprint">0</span>
+                    <span class="result-unit">kg CO₂</span>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-label">Trees Needed to Offset</div>
+                <div>
+                    <span class="result-value" id="treesNeeded">0</span>
+                    <span class="result-unit">trees/year</span>
+                </div>
+            </div>
+
+            <h3 style="color: #1b5e20; margin-top: 30px; margin-bottom: 15px; font-size: 18px;">⚖️ Energy Distribution</h3>
+            <table class="breakdown-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Percentage</th>
+                        <th>Daily (kWh)</th>
+                        <th>Annual (kWh)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🌡️ HVAC</td>
+                        <td id="hvacPct">0%</td>
+                        <td id="hvacDaily">0</td>
+                        <td id="hvacAnnual">0</td>
+                    </tr>
+                    <tr>
+                        <td>💡 Lighting</td>
+                        <td id="lightingPct">0%</td>
+                        <td id="lightingDaily">0</td>
+                        <td id="lightingAnnual">0</td>
+                    </tr>
+                    <tr>
+                        <td>⚙️ Equipment</td>
+                        <td id="equipmentPct">0%</td>
+                        <td id="equipmentDaily">0</td>
+                        <td id="equipmentAnnual">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="charts-section">
+        <h2>📉 Visual Analysis</h2>
+        <div class="chart-container">
+            <div class="chart-box">
+                <h3 style="color: #1b5e20; text-align: center; margin-top: 0;">Energy Distribution by Component</h3>
+                <canvas id="pieChart" width="400" height="300"></canvas>
+            </div>
+            <div class="chart-box">
+                <h3 style="color: #1b5e20; text-align: center; margin-top: 0;">Energy Consumption Trend</h3>
+                <canvas id="barChart" width="400" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Energy density factors based on building type (W/m²)
+    const energyDensityFactors = {
+        academic: 150,
+        laboratory: 200,
+        administrative: 120,
+        residential: 100,
+        other: 130
+    };
+
+    // Global variables for charts
+    let pieChart = null;
+    let barChart = null;
+    const electricityRate = 0.13; // $ per kWh
+    const carbonEmissionFactor = 0.85; // kg CO2 per kWh (US average)
+    const treeCarbonAbsorption = 25; // kg CO2 per tree per year
+
+    function calculateEnergy() {
+        // Get input values
+        const buildingName = document.getElementById('buildingName').value || 'Test Building';
+        const buildingType = document.getElementById('buildingType').value || 'other';
+        const buildingArea = parseFloat(document.getElementById('buildingArea').value) || 0;
+        const occupancy = parseFloat(document.getElementById('occupancy').value) || 0;
+        const operatingHours = parseFloat(document.getElementById('operatingHours').value) || 8;
+        const hvacPercentage = parseFloat(document.getElementById('hvacPercentage').value) || 50;
+        const lightingPercentage = parseFloat(document.getElementById('lightingPercentage').value) || 25;
+        let equipmentPercentage = parseFloat(document.getElementById('equipmentPercentage').value) || 25;
+
+        // Validate inputs
+        if (buildingArea === 0 || operatingHours === 0) {
+            alert('Please enter valid building area and operating hours');
+            return;
+        }
+
+        // Auto-calculate equipment percentage if not provided
+        if (hvacPercentage + lightingPercentage + equipmentPercentage !== 100) {
+            equipmentPercentage = 100 - hvacPercentage - lightingPercentage;
+        }
+
+        // Get energy density factor
+        const energyDensity = energyDensityFactors[buildingType] || 130;
+
+        // Calculate base daily energy (in kWh)
+        let baseEnergy = (buildingArea * energyDensity * operatingHours) / 1000;
+
+        // Apply occupancy multiplier for HVAC and equipment
+        const occupancyFactor = Math.min(occupancy / 100 + 0.5, 1.5); // Factor between 0.5 and 1.5
+
+        // Calculate component-wise energy
+        let hvacEnergy = baseEnergy * (hvacPercentage / 100) * occupancyFactor;
+        let lightingEnergy = baseEnergy * (lightingPercentage / 100);
+        let equipmentEnergy = baseEnergy * (equipmentPercentage / 100);
+
+        // Total daily energy
+        const dailyEnergy = hvacEnergy + lightingEnergy + equipmentEnergy;
+        const monthlyEnergy = dailyEnergy * 30;
+        const annualEnergy = dailyEnergy * 365;
+
+        // Calculate costs and emissions
+        const annualCost = annualEnergy * electricityRate;
+        const carbonFootprint = annualEnergy * carbonEmissionFactor;
+        const treesNeeded = Math.ceil(carbonFootprint / treeCarbonAbsorption);
+
+        // Update results
+        document.getElementById('dailyEnergy').textContent = dailyEnergy.toFixed(2);
+        document.getElementById('monthlyEnergy').textContent = monthlyEnergy.toFixed(2);
+        document.getElementById('annualEnergy').textContent = annualEnergy.toFixed(2);
+        document.getElementById('annualCost').textContent = '$' + annualCost.toFixed(2);
+        document.getElementById('carbonFootprint').textContent = carbonFootprint.toFixed(0);
+        document.getElementById('treesNeeded').textContent = treesNeeded;
+
+        // Update breakdown table
+        document.getElementById('hvacPct').textContent = hvacPercentage + '%';
+        document.getElementById('hvacDaily').textContent = hvacEnergy.toFixed(2);
+        document.getElementById('hvacAnnual').textContent = (hvacEnergy * 365).toFixed(2);
+
+        document.getElementById('lightingPct').textContent = lightingPercentage + '%';
+        document.getElementById('lightingDaily').textContent = lightingEnergy.toFixed(2);
+        document.getElementById('lightingAnnual').textContent = (lightingEnergy * 365).toFixed(2);
+
+        document.getElementById('equipmentPct').textContent = equipmentPercentage + '%';
+        document.getElementById('equipmentDaily').textContent = equipmentEnergy.toFixed(2);
+        document.getElementById('equipmentAnnual').textContent = (equipmentEnergy * 365).toFixed(2);
+
+        // Update charts
+        updateCharts(hvacPercentage, lightingPercentage, equipmentPercentage, dailyEnergy, monthlyEnergy, annualEnergy);
+
+        // Check for high energy consumption and show alerts
+        checkEnergyConsumptionThreshold(dailyEnergy);
+    }
+
+    function checkEnergyConsumptionThreshold(dailyEnergy) {
+        const alertHighConsumption = document.getElementById('alertHighConsumption');
+        const alertMediumConsumption = document.getElementById('alertMediumConsumption');
+        const alertDailyValue = document.getElementById('alertDailyValue');
+        const alertMediumValue = document.getElementById('alertMediumValue');
+
+        // Remove both alerts first
+        alertHighConsumption.classList.remove('show');
+        alertMediumConsumption.classList.remove('show');
+
+        // Check if consumption exceeds critical threshold (5000 kWh/day)
+        if (dailyEnergy > 5000) {
+            alertDailyValue.textContent = dailyEnergy.toFixed(2);
+            alertHighConsumption.classList.add('show');
+
+            // Play notification sound (if available)
+            playNotificationSound();
+
+            // Log to console
+            console.warn('HIGH ENERGY CONSUMPTION ALERT: ' + dailyEnergy.toFixed(2) + ' kWh/day');
+        }
+        // Check if consumption is between 4000-5000 kWh/day
+        else if (dailyEnergy > 4000) {
+            alertMediumValue.textContent = dailyEnergy.toFixed(2);
+            alertMediumConsumption.classList.add('show');
+
+            // Log to console
+            console.warn('MEDIUM ENERGY CONSUMPTION WARNING: ' + dailyEnergy.toFixed(2) + ' kWh/day');
+        }
+    }
+
+    function playNotificationSound() {
+        // Create a simple beep sound using Web Audio API
+        try {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            oscillator.frequency.value = 1000; // Hz
+            oscillator.type = 'sine';
+
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        } catch (e) {
+            // Fallback if Web Audio API not supported
+            console.log('Notification: High energy consumption detected!');
+        }
+    }
+
+    function updateCharts(hvac, lighting, equipment, daily, monthly, annual) {
+        // Pie Chart - Energy Distribution
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        if (pieChart) pieChart.destroy();
+        pieChart = new Chart(pieCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['HVAC (' + hvac + '%)', 'Lighting (' + lighting + '%)', 'Equipment (' + equipment + '%)'],
+                datasets: [{
+                    data: [hvac, lighting, equipment],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                    borderColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Bar Chart - Energy Trend
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        if (barChart) barChart.destroy();
+        barChart = new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Daily', 'Monthly', 'Annual'],
+                datasets: [{
+                    label: 'Energy Consumption (kWh)',
+                    data: [daily, monthly, annual],
+                    backgroundColor: ['#66BB6A', '#2E7D32', '#1B5E20'],
+                    borderColor: ['#66BB6A', '#2E7D32', '#1B5E20'],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Energy (kWh)'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function resetForm() {
+        document.getElementById('buildingName').value = '';
+        document.getElementById('buildingType').value = '';
+        document.getElementById('buildingArea').value = '';
+        document.getElementById('occupancy').value = '';
+        document.getElementById('operatingHours').value = '';
+        document.getElementById('hvacPercentage').value = '50';
+        document.getElementById('lightingPercentage').value = '25';
+        document.getElementById('equipmentPercentage').value = '25';
+
+        // Reset all results
+        document.getElementById('dailyEnergy').textContent = '0';
+        document.getElementById('monthlyEnergy').textContent = '0';
+        document.getElementById('annualEnergy').textContent = '0';
+        document.getElementById('annualCost').textContent = '$0';
+        document.getElementById('carbonFootprint').textContent = '0';
+        document.getElementById('treesNeeded').textContent = '0';
+    }
+
+    // Initialize with sample data
+    window.addEventListener('load', function() {
+        calculateEnergy();
+    });
+</script>
+
+</body>
+</html>
