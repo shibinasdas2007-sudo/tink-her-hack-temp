@@ -6,14 +6,14 @@
 
 ## Basic Details
 
-### Team Name: [AS]
+### Team Name: AS
 
 ### Team Members
 - Member 1: AMRITHA S L -Lourds Matha College of Science and Technology
 - Member 2: SHIBINA S DAS -Lourds Matha College of Science and Technology 
 
 ### Hosted Project Link
-
+https://quiet-pika-970864.netlify.app/
 
 ### Project Description
  to analyze monitor and optimiseenergy consumption acros a campus 
@@ -103,9 +103,7 @@ microcontroller,energy meter, current sensor,voltage sensor,wifi module,power su
 #### Diagrams
 
 **System Architecture:**
-
-![visual data](docs/architecture.png)
-*Explain your system architecture - components, data flow, tech stack interaction*
+<img width="899" height="1599" alt="image" src="https://github.com/user-attachments/assets/0b6e15fc-b91a-4d94-9e38-0d32cd32a4a8" />
 
 **Application Workflow:**
 
@@ -406,8 +404,9 @@ If you used AI tools during development, document them here for transparency:
 
 ## Team Contributions
 
-- [Name 1]: [Specific contributions - e.g., Frontend development, API integration, etc.]
-- [Name 2]: [Specific contributions - e.g., Backend development, Database design, etc.]
+- SHIBINA S DAS: Idea and innovation
+-AMRITHA S L:Typing and coding
+
 - [Name 3]: [Specific contributions - e.g., UI/UX design, Testing, Documentation, etc.]
 
 ---
