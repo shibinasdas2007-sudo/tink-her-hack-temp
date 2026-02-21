@@ -1,28 +1,28 @@
-<p align="center">
+<img width="1919" height="1079" alt="Screenshot 2026-02-21 111735" src="https://github.com/user-attachments/assets/0b0a37b2-9fb6-4672-b7cb-268ab9250ac1" /><img width="1919" height="1079" alt="Screenshot 2026-02-21 111735" src="https://github.com/user-attachments/assets/0b0a37b2-9fb6-4672-b7cb-268ab9250ac1" /><p align="center">
   <img src="./img.png" alt="Project Banner" width="100%">
 </p>
 
-# [Project Name] 🎯
+# GREEN CAMPUS ENERGY MONITOR 🎯
 
 ## Basic Details
 
-### Team Name: [Name]
+### Team Name: [AS]
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: AMRITHA S L -Lourds Matha College of Science and Technology
+- Member 2: SHIBINA S DAS -Lourds Matha College of Science and Technology 
 
 ### Hosted Project Link
-[mention your project hosted link here]
+
 
 ### Project Description
-[2-3 lines about what your project does]
+[ to analyze monitor and optimiseenergy consumption acros a campus ]
 
 ### The Problem statement
-[What problem are you solving?]
+[ High Consumption of Energy]
 
 ### The Solution
-[How are you solving it?]
+[By analysing monitoring and using LED lighting uprade,HVAC optimisition,Solar panel installation]
 
 ---
 
@@ -31,25 +31,25 @@
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
+- Languages used: [ html]
 - Frameworks used: [e.g., React, Django, Spring Boot]
 - Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
+- Tools used: [ VS Code, Git, Docker]
 
 **For Hardware:**
-- Main components: [List main components]
-- Specifications: [Technical specifications]
-- Tools required: [List tools needed]
+- Main components: [microcontroller ,current sensor,voltage sensor,wifi module,power supply,] ]
+- Specifications: [html,vs code ]
+- Tools required: [microcontroller ,current sensor,voltage sensor,wifi module,power supply,html,vs code ]
 
 ---
 
 ## Features
 
 List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+- Feature 1: Real Time Energy monitoring
+- Feature 2: Data analysis and Visualisation
+- Feature 3: Threshold alerts and notifications
+- Feature 4: user friendly web interaction
 
 ---
 
@@ -59,21 +59,21 @@ List the key features of your project:
 
 #### Installation
 ```bash
-[Installation commands - e.g., npm install, pip install -r requirements.txt]
-```
+[html install]
 
 #### Run
 ```bash
-[Run commands - e.g., npm start, python app.py]
+[index.html ]
 ```
 
 ### For Hardware:
 
 #### Components Required
-[List all components needed with specifications]
+[microcontroller,energy meter, current sensor,voltage sensor,wifi module,power supply]
 
 #### Circuit Setup
-[Explain how to set up the circuit]
+[microcontroller,energy meter, current sensor,voltage sensor,wifi module,power supply]
+
 
 ---
 
@@ -83,20 +83,20 @@ List the key features of your project:
 
 #### Screenshots (Add at least 3)
 
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+<img width="1919" height="1079" alt="Screenshot 2026-02-21 111735" src="https://github.com/user-attachments/assets/951130ea-fbdf-40c7-82a4-61e8ba41f2b3" />
+*This is our website*
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+<img width="487" height="899" alt="Screenshot 2026-02-21 111817" src="https://github.com/user-attachments/assets/272e611e-13aa-4262-99db-b52b08d8bbd6" />
+*this is our data collection area*
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+<img width="471" height="907" alt="Screenshot 2026-02-21 111827" src="https://github.com/user-attachments/assets/64b31363-526b-4dd6-a0d2-06bf473ce597" />
+*this area shows the energy calculating results*
 
 #### Diagrams
 
 **System Architecture:**
 
-![Architecture Diagram](docs/architecture.png)
+![visual data](docs/architecture.png)
 *Explain your system architecture - components, data flow, tech stack interaction*
 
 **Application Workflow:**
@@ -116,18 +116,21 @@ List the key features of your project:
 ![Schematic](Add your schematic diagram here)
 *Add caption explaining the schematic*
 
-#### Build Photos
+#### Build Pho<img width="894" height="89" alt="Screenshot 2026-02-21 121639" src="https://github.com/user-attachments/assets/9c678bc3-e878-4059-a5df-ca68d1b43540" />
+<img width="894" height="89" alt="Screenshot 2026-02-21 121639" src="https://github.com/user-attachments/assets/9c678bc3-e878-4059-a5df-ca68d1b43540" />
+tos
 
-![Team](Add photo of your team here)
 
 ![Components](Add photo of your components here)
 *List out all components shown*
 
-![Build](Add photos of build process here)
-*Explain the build steps*
+*Explain the build st<img width="1919" height="1079" alt="Screenshot 2026-02-21 111735" src="https://github.com/user-attachments/assets/43cd2124-2d95-4297-b5f0-22f183029f5f" />
+eps*
 
 ![Final](Add photo of final product here)
 *Explain the final build*
+<img width="487" height="899" alt="Screenshot 2026-02-21 111817" src="https://github.com/user-attachments/assets/dfcb7cc2-1bb0-4e97-9ae1-64d812e30447" />
+<img width="471" height="907" alt="Screenshot 2026-02-21 111827" src="https://github.com/user-attachments/assets/22160f24-edb0-40dd-ab97-4ab8e16a2c7c" />
 
 ---
 
@@ -142,10 +145,10 @@ List the key features of your project:
 ##### Endpoints
 
 **GET /api/endpoint**
-- **Description:** [What it does]
+- **Description:** [notify the high consumption  of energy]
 - **Parameters:**
-  - `param1` (string): [Description]
-  - `param2` (integer): [Description]
+  - `param1` (string): [consumtion of energy]
+  - `param2` (integer): [consumption result]
 - **Response:**
 ```json
 {
@@ -155,7 +158,7 @@ List the key features of your project:
 ```
 
 **POST /api/endpoint**
-- **Description:** [What it does]
+- **Description:** [alerting the high consumption of energy]
 - **Request Body:**
 ```json
 {
@@ -169,9 +172,7 @@ List the key features of your project:
   "status": "success",
   "message": "Operation completed"
 }
-```
-
-[Add more endpoints as needed...]
+---
 
 ---
 
@@ -228,7 +229,7 @@ xcodebuild -workspace App.xcworkspace -scheme App -configuration Debug
 | Jumper Wires | 20 | Male-to-Male | ₹50 | [Link] |
 | [Add more...] | | | | |
 
-**Total Estimated Cost:** ₹[Amount]
+**Total Estimated Cost:** ₹[5000]
 
 #### Assembly Instructions
 
@@ -236,7 +237,7 @@ xcodebuild -workspace App.xcworkspace -scheme App -configuration Debug
 1. Gather all components listed in the BOM
 2. Check component specifications
 3. Prepare your workspace
-![Step 1](images/assembly-step1.jpg)
+
 *Caption: All components laid out*
 
 **Step 2: Build the Power Supply**
@@ -360,13 +361,12 @@ python script.py -v --format json data.json
 
 ## Project Demo
 
-### Video
-[Add your demo video link here - YouTube, Google Drive, etc.]
+https://drive.google.com/drive/folders/1AX22aDCMD9VGjoAkrpyLxNsgsxa24eHn?usp=sharing
 
 *Explain what the video demonstrates - key features, user flow, technical highlights*
 
 ### Additional Demos
-[Add any extra demo materials/links - Live site, APK download, online demo, etc.]
+https://drive.google.com/drive/folders/1AX22aDCMD9VGjoAkrpyLxNsgsxa24eHn?usp=sharing
 
 ---
 
@@ -376,7 +376,7 @@ If you used AI tools during development, document them here for transparency:
 
 **Tool Used:** [e.g., GitHub Copilot, v0.dev, Cursor, ChatGPT, Claude]
 
-**Purpose:** [What you used it for]
+**Purpose:** [calculating the high consumption]
 - Example: "Generated boilerplate React components"
 - Example: "Debugging assistance for async functions"
 - Example: "Code review and optimization suggestions"
