@@ -31,11 +31,19 @@
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [ html]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [ VS Code, Git, Docker]
+HTML (frontend)
 
+VS Code (development environment)
+
+Hardware:
+
+Microcontroller (Arduino/ESP module)
+
+Current and voltage sensors
+
+Wi-Fi module
+
+Power supply
 **For Hardware:**
 - Main components: [microcontroller ,current sensor,voltage sensor,wifi module,power supply,] ]
 - Specifications: [html,vs code ]
