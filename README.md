@@ -16,13 +16,13 @@
 
 
 ### Project Description
-[ to analyze monitor and optimiseenergy consumption acros a campus ]
+ to analyze monitor and optimiseenergy consumption acros a campus 
 
 ### The Problem statement
-[ High Consumption of Energy]
+ High Consumption of Energy
 
 ### The Solution
-[By analysing monitoring and using LED lighting uprade,HVAC optimisition,Solar panel installation]
+By analysing monitoring and using LED lighting uprade,HVAC optimisition,Solar panel installation
 
 ---
 
@@ -45,9 +45,9 @@ Wi-Fi module
 
 Power supply
 **For Hardware:**
-- Main components: [microcontroller ,current sensor,voltage sensor,wifi module,power supply,] ]
-- Specifications: [html,vs code ]
-- Tools required: [microcontroller ,current sensor,voltage sensor,wifi module,power supply,html,vs code ]
+- Main components:microcontroller ,current sensor,voltage sensor,wifi module,power supply,
+- Specifications:html,vs code 
+- Tools required: microcontroller ,current sensor,voltage sensor,wifi module,power supply,html,vs code
 
 ---
 
@@ -77,10 +77,10 @@ List the key features of your project:
 ### For Hardware:
 
 #### Components Required
-[microcontroller,energy meter, current sensor,voltage sensor,wifi module,power supply]
+microcontroller,energy meter, current sensor,voltage sensor,wifi module,power supply
 
 #### Circuit Setup
-[microcontroller,energy meter, current sensor,voltage sensor,wifi module,power supply]
+microcontroller,energy meter, current sensor,voltage sensor,wifi module,power supply
 
 
 ---
@@ -109,9 +109,7 @@ List the key features of your project:
 
 **Application Workflow:**
 
-![Workflow](docs/workflow.png)
-*Add caption explaining your workflow*
-
+<img width="899" height="1599" alt="image" src="https://github.com/user-attachments/assets/1e4fffa5-356b-4b4d-98da-416ba0a28c61" />
 ---
 
 ### For Hardware:
